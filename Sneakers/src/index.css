@@ -7,6 +7,67 @@ body {
   font-family: 'Kumbh Sans', sans-serif;
 }
 
+body {
+  font-family: Arial, sans-serif;
+}
+
+.cartItemsContainer {
+  width: 20rem;
+  height: 10rem;
+  /* position: absolute; */
+
+  z-index: 10;
+ 
+
+}
+
+.cartItems {
+  top: -40rem;
+  transition: 0.4s ease-in-out;
+}
+
+.cartItems.open {
+  top: 2rem;
+}
+
+.sideMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  transform: translateX(-100%);
+  transition: transform 0.5s;
+  color: white;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+.sideMenu.active {
+  transform: translateX(0);
+}
+
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 36px;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 8px 15px;
+}
+
+
+
+
+
 .image-container {
   position: relative;
 
@@ -18,6 +79,12 @@ body {
   opacity: 0;
   transition: opacity 1s ease;
   width: 100%;
+    background-size: cover; /* ensures the image covers the entire div */
+    background-position: center; /* centers the image */
+    background-repeat: no-repeat; /* prevents image repeating */
+    /* ... (rest of your code, no changes here) */
+
+
 }
 
 .slider-image.active {
