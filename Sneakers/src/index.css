@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  font-family: 'Kumbh Sans', sans-serif;
+}
+
+.image-container {
+  position: relative;
+
+}
+
+.slider-image {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+  width: 100%;
+}
+
+.slider-image.active {
+  opacity: 1;
+}
+
+/* 
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+button {
+  margin-left: 10px;
+}
+
+h1, h2, h3 {
+  margin-bottom: 20px;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close-btn {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+} */
