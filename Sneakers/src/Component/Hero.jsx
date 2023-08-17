@@ -27,6 +27,9 @@ const Hero = () => {
     return () => clearInterval(slide);
   }, [Currentimage]);
 
+
+
+
   return (
     <>
       <section>
@@ -108,13 +111,16 @@ const Hero = () => {
               <h4 className=" cursor-pointer text-orange-600 font-bold">+</h4>
             </div>
           </section>
-          <section className="addtoCart mb-16">
+          <section className="addtoCart mb-[8rem]">
             <button className=" bg-orange-600  rounded-lg  block w-full h-12 text-slate-100 font-medium cursor-pointer">
               Add to cart
             </button>
           </section>
         </section>
       </section>
+
+    
+
     </>
   );
 };
