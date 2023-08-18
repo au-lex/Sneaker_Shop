@@ -6,8 +6,8 @@ const Header = () => {
     <>
     <div className="w-[100%]">
       <section className="mainContainer flex justify-between py-6  px-4     ">
-        <section className="flex space-x-4 ">
-          <div className="menu mt-1">
+        <section className="flex space-x-4  ">
+          <div className="menu mt-1 lg:hidden">
             <span
               className="openMenue"
               onClick={() => {
@@ -33,7 +33,7 @@ const Header = () => {
               />
             </svg>
 
-            <div className="sideMenu  bg-slate-100  px-4">
+            <div className="sideMenu  bg-slate-100  px-4 lg:hidden">
               <span
                 className="closeMenue  absolute top-8 left-5"
                 onClick={() => {

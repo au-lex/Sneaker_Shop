@@ -33,7 +33,7 @@ const Hero = () => {
   return (
     <>
       <section>
-        <div>
+        <div className="lg:hidden">
           <section className="btn relative ">
             <span
               onClick={prevEL}
