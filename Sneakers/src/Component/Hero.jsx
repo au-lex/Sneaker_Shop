@@ -4,9 +4,24 @@ import heroImg2 from "../assets/images/image-product-2.jpg";
 import heroImg3 from "../assets/images/image-product-3.jpg";
 import heroImg4 from "../assets/images/image-product-4.jpg";
 
-const Hero = () => {
+const Hero = ({addtoCart}) => {
+const[products] = useState([
+  { id:1, name: "shoe1", price:250 , Img:heroImg1},
+  { id:2, name: "shoe2", price:200 , Img:heroImg2},
+  { id:3, name: "shoe3", price:20 , Img:heroImg3},
+  { id:4, name: "shoe4", price:50 , Img:heroImg4},
+]);
+
+
+  const imagesGallery = [heroImg1, heroImg2, heroImg3, heroImg4];
+
   const images = [heroImg1, heroImg2, heroImg3, heroImg4];
   const [Currentimage, Setcurrentimage] = useState(0);
+  const [CurrentimageG, SetcurrentimageG] = useState(0);
+
+const [Qty, SetQty] = useState(1)
+const currentProduct = products[Currentimage];
+
 
   const nextEl = () => {
     const lastimg = images.length - 1;
@@ -32,7 +47,7 @@ const Hero = () => {
 
   return (
     <>
-      <section>
+      <section className=" mt-[3rem] lg:mt-[10rem]  relative lg:top-[20rem] ">
         <div className="lg:hidden">
           <section className="btn relative ">
             <span
@@ -65,9 +80,9 @@ const Hero = () => {
             </span>
           </section>
           <div className="sliderContainer  image-container w-[390px] h-[390px] shadow-md  relative">
-            {images.map((img, index) => (
+            {products.map((product, index) => (
               <img
-                src={img}
+                src={product.Img}
                 alt=""
                 key={index}
                 className={
@@ -78,22 +93,24 @@ const Hero = () => {
               />
             ))}
           </div>
-        </div>
-        <section className="desc px-6 mt-6">
+
+
+          <section className="desc px-6 mt-[3rem] lg:mt-[8rem]">
           <h4 className="uppercase text-orange-500 font-bold  my-1">
             Sneaker Company{" "}
           </h4>
-          <h1 className="uppercase text-[1.6rem] font-semibold">
+          <h1 className="uppercase text-[1.6rem] font-semibold lg:text-[2.3rem] lg:font-bold">
             Fall Limited Edition <br />
             Sneakers
           </h1>
-          <div className="desc my-3">
-            These low-profile sneakers are your perfect casual wear companion.
+          <div className="desc my-3 ">
+           <p> These low-profile sneakers are your perfect casual wear companion.
             Featuring a durable rubber outer sole, they’ll withstand everything
             the weather can offer.
+            </p>
           </div>
 
-          <section className="price flex  justify-between my-6">
+          <section className="price flex  justify-between my-6 lg:flex-col lg:flex">
             <div className="flex space-x-4">
               <h1 className="text-[1.6rem] font-bold">$125.00</h1>
               <h1 className="bg-orange-50 px-3 py-2 text-orange-600 font-semibold rounded-md">
@@ -104,19 +121,113 @@ const Hero = () => {
               $250.00
             </h1>
           </section>
-          <section className="btnContainer my-4">
-            <div className="increase bg-slate-200 flex justify-between px-4 py-2 rounded-lg">
-              <h4 className=" cursor-pointer text-orange-600 font-bold">-</h4>
-              <h4 className="font-bold">0</h4>
-              <h4 className=" cursor-pointer text-orange-600 font-bold">+</h4>
+          <div className=" flex  flex-col">
+          <section className="btnContainer my-4 lg:my-0">
+            <div className="increase bg-slate-200 flex justify-between px-4 py-2 h-12 w-full
+             rounded-lg ">
+              <h4 onClick={()=> {if (Qty > 1)SetQty(Qty-1)}} className=" cursor-pointer
+               text-orange-600 font-bold">-</h4>
+              <h4 className="font-bold">{Qty}</h4>
+              <h4  onClick={()=> SetQty(Qty+1)} className=" cursor-pointer text-orange-600 font-bold">+</h4>
             </div>
           </section>
-          <section className="addtoCart mb-[8rem]">
-            <button className=" bg-orange-600  rounded-lg  block w-full h-12 text-slate-100 font-medium cursor-pointer">
+          <section className="addtoCart mb-[8rem] ">
+            <button onClick={()=> addtoCart(currentProduct, Qty)} className="  bg-orange-600 
+             rounded-lg 
+             block w-full h-12 text-slate-100 font-medium cursor-pointer   lg:w-[12rem] lg:mx-4 lg:py-2">
               Add to cart
             </button>
           </section>
+          </div>
         </section>
+
+        </div>
+   
+
+ 
+  <section className="imageGallery flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+  
+
+<div>
+
+   
+   <section className="thumnailContainer mt-[4rem] hidden lg:block mr-28">
+    <section className="fullImg">
+
+    <div className="w-[450px] h-[450px] fullimg">
+      <img src={imagesGallery[CurrentimageG]} alt=""  className="rounded-[20px]"/>
+    </div>
+    </section>
+
+    <section className="smallImg my-10 flex  space-x-10">
+
+      {imagesGallery.map((imgG, index) => (
+
+<div className="w-[80px] h-[80px] thumnail" key={index}>
+<img
+  src={imgG}
+  alt=""
+  className={`rounded-[6px] ${index === CurrentimageG ? "active" : ""} cursor-pointer`}
+  onClick={() => SetcurrentimageG(index)}
+/>
+</div>
+
+
+      ))}
+  
+    </section>
+   </section>
+   </div>
+
+
+        <section className="desc px-6 mt-[0rem] lg:mt-[8rem] hidden lg:block">
+          <h4 className="uppercase text-orange-500 font-bold  my-1">
+            Sneaker Company{" "}
+          </h4>
+          <h1 className="uppercase text-[1.6rem] font-semibold lg:text-[2.3rem] lg:font-bold">
+            Fall Limited Edition <br />
+            Sneakers
+          </h1>
+          <div className="desc my-3 ">
+           <p> These low-profile sneakers are your perfect casual wear companion.
+            Featuring a durable rubber outer sole, they’ll withstand everything
+            the weather can offer.
+            </p>
+          </div>
+
+          <section className="price flex  justify-between my-6 lg:flex-col lg:flex">
+            <div className="flex space-x-4">
+              <h1 className="text-[1.6rem] font-bold">$125.00</h1>
+              <h1 className="bg-orange-50 px-3 py-2 text-orange-600 font-semibold rounded-md">
+                50%
+              </h1>
+            </div>
+            <h1 className=" line-through font-medium text-gray-400 ">
+              $250.00
+            </h1>
+          </section>
+          <div className=" flex ">
+          <section className="btnContainer my-4 lg:my-0">
+            <div className="increase bg-slate-200 flex justify-between px-4 py-2 h-12
+             rounded-lg lg:w-[12rem]">
+              <h4 onClick={()=> {if (Qty > 1)SetQty(Qty-1)}} className=" cursor-pointer
+               text-orange-600 font-bold">-</h4>
+              <h4 className="font-bold">{Qty}</h4>
+              <h4  onClick={()=> SetQty(Qty+1)} className=" cursor-pointer text-orange-600 font-bold">+</h4>
+            </div>
+          </section>
+          <section className="addtoCart mb-[8rem] ">
+            <button onClick={()=> addtoCart(currentProduct, Qty)} className="  bg-orange-600 
+             rounded-lg 
+             block w-full h-12 text-slate-100 font-medium cursor-pointer   lg:w-[12rem] lg:mx-4 lg:py-2">
+              Add to cart
+            </button>
+          </section>
+          </div>
+        </section>
+
+        </section>
+  
       </section>
 
     
